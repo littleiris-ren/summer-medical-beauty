@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>暑期节点 · 医美搜索广告内容制作建议</title>
+<style>
+:root {
+  --primary: #27ae60;
+  --primary-light: #2ecc71;
+  --primary-bg: #f0faf4;
+  --primary-bg2: #e8f8f0;
+  --text: #1a1a2e;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04);
+  --shadow-lg: 0 4px 24px rgba(0,0,0,.08);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --orange: #f59e0b;
+  --orange-bg: #fffbeb;
+  --blue: #3b82f6;
+  --blue-bg: #eff6ff;
+  --purple: #8b5cf6;
+  --purple-bg: #f5f3ff;
+  --pink: #ec4899;
+  --pink-bg: #fdf2f8;
+  --teal: #14b8a6;
+  --teal-bg: #f0fdfa;
+  --red: #ef4444;
+  --red-bg: #fef2f2;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; line-height: 1.8; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+
+/* Nav */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); height: 60px; display: flex; align-items: center; padding: 0 24px; }
+.nav-inner { max-width: 1040px; width: 100%; margin: 0 auto; display: flex; align-items: center; gap: 8px; }
+.nav-brand { font-weight: 700; font-size: 15px; color: var(--primary); white-space: nowrap; display: flex; align-items: center; gap: 8px; }
+.nav-links { display: flex; gap: 2px; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-left: 16px; }
+.nav-links a { font-size: 12px; color: var(--text-secondary); text-decoration: none; padding: 5px 10px; border-radius: 6px; white-space: nowrap; transition: all .2s; }
+.nav-links a:hover { color: var(--primary); background: var(--primary-bg); }
+
+/* Hero */
+.hero { padding: 96px 24px 52px; text-align: center; background: linear-gradient(135deg, #f0faf4 0%, #f8fafc 50%, #e8f8f0 100%); position: relative; overflow: hidden; }
+.hero::before { content:''; position: absolute; top: -40%; right: -15%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(46,204,113,.07) 0%, transparent 70%); border-radius: 50%; }
+.hero::after { content:''; position: absolute; bottom: -20%; left: -10%; width: 380px; height: 380px; background: radial-gradient(circle, rgba(245,158,11,.05) 0%, transparent 70%); border-radius: 50%; }
+.hero-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(39,174,96,.1); color: var(--primary); font-size: 13px; font-weight: 600; padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(39,174,96,.2); margin-bottom: 16px; position: relative; z-index: 1; }
+.hero h1 { font-size: clamp(24px, 5vw, 40px); font-weight: 800; background: linear-gradient(135deg, #1a1a2e 30%, #27ae60); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 14px; position: relative; z-index: 1; }
+.hero .subtitle { font-size: 15px; color: var(--text-secondary); max-width: 580px; margin: 0 auto 20px; position: relative; z-index: 1; line-height: 1.7; }
+.hero-badges { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; position: relative; z-index: 1; }
+.hero-badge { font-size: 12px; padding: 4px 12px; border-radius: 20px; font-weight: 500; }
+
+/* Stats */
+.stats-wrap { max-width: 1040px; margin: -24px auto 40px; padding: 0 24px; position: relative; z-index: 2; }
+.stats-inner { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 24px 32px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--border); }
+.stat-item { text-align: center; padding: 8px 0; position: relative; }
+.stat-item + .stat-item::before { content:''; position: absolute; left: 0; top: 15%; bottom: 15%; width: 1px; background: var(--border); }
+.stat-value { font-size: 26px; font-weight: 800; color: var(--primary); line-height: 1.2; }
+.stat-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+/* Container */
+.container { max-width: 1040px; margin: 0 auto; padding: 0 24px 64px; }
+
+/* Section title */
+.section-title { font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+.section-title .icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; flex-shrink: 0; }
+
+/* Strategy overview table */
+.overview-table { width: 100%; border-collapse: separate; border-spacing: 0; background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 48px; }
+.overview-table th { background: linear-gradient(135deg, #1a1a2e, #2d2d44); color: #fff; font-weight: 600; font-size: 13px; padding: 14px 16px; text-align: left; }
+.overview-table td { padding: 13px 16px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: top; }
+.overview-table tr:last-child td { border-bottom: none; }
+.overview-table tbody tr:hover { background: var(--primary-bg); }
+.overview-table .crowd-name { font-weight: 600; color: var(--text); }
+.pop-badge { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.pop-high { background: #dcfce7; color: #166534; }
+.pop-mid { background: #fef9c3; color: #854d0e; }
+.pop-new { background: #e0f2fe; color: #0c4a6e; }
+
+/* Crowd cards grid */
+.crowds-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 24px; margin-bottom: 48px; }
+
+.crowd-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.crowd-header { padding: 20px 24px; display: flex; align-items: flex-start; gap: 14px; }
+.crowd-emoji { font-size: 28px; flex-shrink: 0; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 14px; }
+.crowd-meta { flex: 1; }
+.crowd-title { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.crowd-desc { font-size: 12px; color: rgba(255,255,255,.72); line-height: 1.6; }
+.crowd-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.crowd-tag { background: rgba(255,255,255,.15); color: rgba(255,255,255,.9); padding: 2px 8px; border-radius: 4px; font-size: 11px; }
+
+.crowd-body { padding: 20px 24px; }
+
+.insight-box { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; margin-bottom: 16px; }
+.insight-label { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px; display: flex; align-items: center; gap: 5px; }
+.insight-label::before { content:''; width: 3px; height: 11px; background: var(--primary); border-radius: 2px; }
+.insight-text { font-size: 13px; color: var(--text); line-height: 1.7; }
+
+.kw-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.kw { background: var(--primary-bg); color: var(--primary); padding: 3px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; border: 1px solid rgba(39,174,96,.15); }
+.kw.hot { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+
+.title-formulas { display: flex; flex-direction: column; gap: 8px; }
+.formula { background: var(--bg); border: 1px solid var(--border); border-left: 3px solid var(--primary); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 10px 14px; font-size: 13px; color: var(--text); line-height: 1.6; }
+.formula .formula-type { font-size: 11px; color: var(--text-muted); font-weight: 600; margin-bottom: 4px; }
+.formula em { font-style: normal; color: var(--primary); font-weight: 600; }
+
+.visual-list { display: flex; flex-direction: column; gap: 8px; }
+.visual-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text); line-height: 1.6; }
+.visual-item::before { content: '▸'; color: var(--primary); flex-shrink: 0; margin-top: 2px; }
+
+.content-angles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.angle { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px 12px; }
+.angle-icon { font-size: 16px; margin-bottom: 4px; }
+.angle-title { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.angle-desc { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+
+.divider { height: 1px; background: var(--border); margin: 16px 0; }
+
+/* Timing section */
+.timing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 48px; }
+.timing-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+.timing-month { font-size: 16px; font-weight: 800; color: var(--primary); margin-bottom: 8px; }
+.timing-tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; background: var(--primary-bg); color: var(--primary); font-weight: 600; margin-bottom: 10px; }
+.timing-crowds { display: flex; flex-direction: column; gap: 6px; }
+.timing-row { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); }
+.timing-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* Note box */
+.note-box { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 1px solid #fde68a; border-radius: var(--radius-sm); padding: 16px 20px; font-size: 13px; color: #92400e; line-height: 1.7; margin-bottom: 32px; }
+.note-box strong { color: #78350f; }
+
+/* Footer */
+footer { text-align: center; padding: 32px 24px; color: var(--text-muted); font-size: 13px; border-top: 1px solid var(--border); }
+@media (max-width: 768px) {
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .crowds-grid { grid-template-columns: 1fr; }
+  .timing-grid { grid-template-columns: 1fr; }
+  .content-angles { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">☀️ 暑期医美内容建议</div>
+    <div class="nav-links">
+      <a href="#overview">总览</a>
+      <a href="#timing">节点规划</a>
+      <a href="#grad">毕业生</a>
+      <a href="#wedding">备婚</a>
+      <a href="#student">大学生</a>
+      <a href="#office">调休/年假</a>
+      <a href="#mom">暑期班妈妈</a>
+      <a href="#suncare">晒后修复</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-tag">☀️ 暑期节点 · 2026年6-8月</div>
+  <h1>医美搜索广告<br>暑期人群内容制作建议</h1>
+  <p class="subtitle">从用户搜索心理出发，针对六大暑期活跃人群，提供差异化的内容方向、标题公式与视觉建议</p>
+  <div class="hero-badges">
+    <span class="hero-badge" style="background:#dcfce7;color:#166534;">🎓 毕业生</span>
+    <span class="hero-badge" style="background:#fce7f3;color:#9d174d;">👰 备婚</span>
+    <span class="hero-badge" style="background:#dbeafe;color:#1e40af;">📚 大学生</span>
+    <span class="hero-badge" style="background:#ede9fe;color:#5b21b6;">💼 职场白领</span>
+    <span class="hero-badge" style="background:#fef9c3;color:#854d0e;">🏠 暑期班妈妈</span>
+    <span class="hero-badge" style="background:#fde8d8;color:#9a3412;">🌞 晒后修复</span>
+  </div>
+</header>
+
+<div class="stats-wrap">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-value">6</div><div class="stat-label">核心人群</div></div>
+    <div class="stat-item"><div class="stat-value">3</div><div class="stat-label">暑期月份</div></div>
+    <div class="stat-item"><div class="stat-value">36</div><div class="stat-label">内容角度</div></div>
+    <div class="stat-item"><div class="stat-value">60+</div><div class="stat-label">标题公式 & 关键词</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="note-box">
+    <strong>📌 使用说明：</strong>本报告基于暑期（6-8月）医美搜索行为特征与人群心理洞察撰写，内容方向和标题公式供内容团队参考。关键词方向不代表实际竞价词包，建议结合平台搜索数据进一步验证。
+  </div>
+
+  <!-- 总览 -->
+  <div id="overview" style="margin-bottom:40px;">
+    <h2 class="section-title"><span class="icon">🗺️</span>六大人群总览</h2>
+    <table class="overview-table">
+      <thead><tr><th>#</th><th>人群</th><th>核心动机</th><th>高频搜索意图</th><th>主推品项</th><th>热度</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><b>1</b></td><td class="crowd-name">🎓 应届毕业生</td>
+          <td>毕业=人生新起点，想在步入职场/新环境前完成"蜕变"</td>
+          <td>毕业季变美、入职前整形、祛痘</td>
+          <td>祛痘、轻医美、隆鼻</td>
+          <td><span class="pop-badge pop-high">🔥 高热</span></td>
+        </tr>
+        <tr>
+          <td><b>2</b></td><td class="crowd-name">👰 备婚人群</td>
+          <td>婚礼是"一生一次"，想在照片里最好看</td>
+          <td>婚前医美、备婚变美计划、婚纱照皮肤</td>
+          <td>水光、激光、祛斑、隆鼻</td>
+          <td><span class="pop-badge pop-high">🔥 高热</span></td>
+        </tr>
+        <tr>
+          <td><b>3</b></td><td class="crowd-name">📚 大学生/Z世代</td>
+          <td>暑假有整块时间恢复，处于探索尝新阶段，主动搜索意愿强</td>
+          <td>暑假整形恢复期、大学生做双眼皮、暑假可以做什么医美</td>
+          <td>双眼皮、隆鼻、祛痘、正畸</td>
+          <td><span class="pop-badge pop-high">🔥 高热</span></td>
+        </tr>
+        <tr>
+          <td><b>4</b></td><td class="crowd-name">💼 有调休/年假人群</td>
+          <td>调休或年假是难得窗口，趁空档做需要恢复期的项目</td>
+          <td>年假做医美、恢复快的项目、不影响上班</td>
+          <td>眼袋、法令纹、水光、激光</td>
+          <td><span class="pop-badge pop-mid">⭐ 中热</span></td>
+        </tr>
+        <tr>
+          <td><b>5</b></td><td class="crowd-name">🏠 孩子上暑期班的妈妈</td>
+          <td>孩子上暑期班/夏令营期间有固定空档，趁机关注被长期搁置的自身抗衰需求</td>
+          <td>眼袋重显老、法令纹变深、皮肤暗沉、抗衰项目推荐</td>
+          <td>眼袋、法令纹、光子嫩肤、水光针</td>
+          <td><span class="pop-badge pop-mid">⭐ 中热</span></td>
+        </tr>
+        <tr>
+          <td><b>6</b></td><td class="crowd-name">🌞 晒后修复</td>
+          <td>夏天户外/旅游后皮肤受损，晒黑晒斑急需修复</td>
+          <td>晒黑修复、晒后祛斑、光子嫩肤</td>
+          <td>光子嫩肤、激光美白、祛斑</td>
+          <td><span class="pop-badge pop-new">🆕 新兴</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 节点规划 -->
+  <div id="timing" style="margin-bottom:48px;">
+    <h2 class="section-title"><span class="icon">📅</span>暑期节点规划</h2>
+    <div class="timing-grid">
+      <div class="timing-card">
+        <div class="timing-month">6月 · 蓄水期</div>
+        <div class="timing-tag">种草启动</div>
+        <div class="timing-crowds">
+          <div class="timing-row"><span class="timing-dot" style="background:#27ae60"></span>毕业生：毕业季变美、参加工作前</div>
+          <div class="timing-row"><span class="timing-dot" style="background:#ec4899"></span>备婚：婚前3个月黄金期</div>
+          <div class="timing-row"><span class="timing-dot" style="background:#3b82f6"></span>学生党：期末→暑假过渡，开始搜索</div>
+        </div>
+        <div style="margin-top:14px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border);padding-top:10px;">
+          💡 重点投种草类内容，激发初步意向；标题多用"毕业""入职前"等节点词
+        </div>
+      </div>
+      <div class="timing-card">
+        <div class="timing-month">7月 · 爆发期</div>
+        <div class="timing-tag">转化冲刺</div>
+        <div class="timing-crowds">
+          <div class="timing-row"><span class="timing-dot" style="background:#3b82f6"></span>学生党：暑假正式开始，咨询/预约高峰</div>
+          <div class="timing-row"><span class="timing-dot" style="background:#8b5cf6"></span>有年假/调休人群：假期集中消化，咨询量上升</div>
+          <div class="timing-row"><span class="timing-dot" style="background:#f59e0b"></span>孩子上暑期班的妈妈：送孩子后有空档，抗衰需求集中释放</div>
+        </div>
+        <div style="margin-top:14px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border);padding-top:10px;">
+          💡 加大促转化内容；突出"暑假恢复期充足"和限时权益
+        </div>
+      </div>
+      <div class="timing-card">
+        <div class="timing-month">8月 · 收尾期</div>
+        <div class="timing-tag">紧迫收割</div>
+        <div class="timing-crowds">
+          <div class="timing-row"><span class="timing-dot" style="background:#ef4444"></span>晒后修复：旅游/户外后集中涌入</div>
+          <div class="timing-row"><span class="timing-dot" style="background:#3b82f6"></span>学生党：开学前最后冲刺</div>
+          <div class="timing-row"><span class="timing-dot" style="background:#27ae60"></span>毕业生：入职前最后窗口</div>
+        </div>
+        <div style="margin-top:14px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border);padding-top:10px;">
+          💡 制造紧迫感："开学前还有X天""暑假还剩X周"；晒后修复内容大量上量
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 各人群详细建议 -->
+  <h2 class="section-title" style="margin-bottom:24px;"><span class="icon">👥</span>各人群内容制作建议</h2>
+  <div class="crowds-grid">
+
+    <!-- 1. 毕业生 -->
+    <div class="crowd-card" id="grad">
+      <div class="crowd-header" style="background:linear-gradient(135deg,#064e3b,#065f46);">
+        <div class="crowd-emoji" style="background:rgba(255,255,255,.12);">🎓</div>
+        <div class="crowd-meta">
+          <div class="crowd-title">应届毕业生</div>
+          <div class="crowd-desc">人生节点叠加、强烈的"蜕变"心理、决策快、客单价中等</div>
+          <div class="crowd-tags">
+            <span class="crowd-tag">6-7月高峰</span>
+            <span class="crowd-tag">25岁以下</span>
+            <span class="crowd-tag">初次决策</span>
+          </div>
+        </div>
+      </div>
+      <div class="crowd-body">
+        <div class="insight-box">
+          <div class="insight-label">用户心理洞察</div>
+          <div class="insight-text">毕业意味着"旧的我"结束——这是改变外形最有心理正当性的时刻。不是"我要整容"，而是"趁着人生转折，给自己一个礼物"。决策门槛相对低，但对安全性和自然度敏感。</div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">高频搜索关键词方向</div>
+          <div class="kw-list">
+            <span class="kw hot">毕业季变美</span><span class="kw hot">入职前整形</span><span class="kw hot">毕业做双眼皮</span>
+            <span class="kw">毕业祛痘</span><span class="kw">步入职场前变美</span><span class="kw">应届生隆鼻</span>
+            <span class="kw">毕业旅行晒黑</span><span class="kw">找工作前皮肤变好</span><span class="kw">毕业蜕变</span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="insight-box">
+          <div class="insight-label">内容角度</div>
+          <div class="content-angles">
+            <div class="angle"><div class="angle-icon">🔄</div><div class="angle-title">蜕变叙事</div><div class="angle-desc">用"毕业前后对比"讲故事，强调人生节点的改变合理性</div></div>
+            <div class="angle"><div class="angle-icon">⏱️</div><div class="angle-title">时间充裕感</div><div class="angle-desc">暑假是天然恢复期，"不影响实习""刚好可以恢复"</div></div>
+            <div class="angle"><div class="angle-icon">💰</div><div class="angle-title">性价比锚点</div><div class="angle-desc">初入职场预算有限，强调学生优惠/首次优惠更具吸引力</div></div>
+            <div class="angle"><div class="angle-icon">🛡️</div><div class="angle-title">安全自然</div><div class="angle-desc">初次做医美，安全第一，强调自然不留痕，不怕被发现</div></div>
+          </div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">标题公式（可直接套用）</div>
+          <div class="title-formulas">
+            <div class="formula"><div class="formula-type">节点感知型</div>毕业前<em>做了一件事</em>，入职第一天同事都问我"最近怎么了"</div>
+            <div class="formula"><div class="formula-type">时间窗口型</div>暑假还有<em>60天</em>｜应届生做<em>双眼皮</em>完美恢复期攻略</div>
+            <div class="formula"><div class="formula-type">对比冲突型</div>毕业照里那个黯淡的我，和现在差了<em>一次激光祛痘</em>的距离</div>
+            <div class="formula"><div class="formula-type">场景代入型</div>实习第一天被HR问"皮肤怎么这么好"｜我的毕业季变美记录</div>
+          </div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">首图视觉建议</div>
+          <div class="visual-list">
+            <div class="visual-item">校园/学士服场景 + 清爽自然的妆容，传递"蜕变"感</div>
+            <div class="visual-item">"毕业前 vs 毕业后"对比图，左暗右亮，光感差异明显</div>
+            <div class="visual-item">手写体"送给自己的毕业礼物"搭配真实素颜好皮肤</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. 备婚 -->
+    <div class="crowd-card" id="wedding">
+      <div class="crowd-header" style="background:linear-gradient(135deg,#831843,#9d174d);">
+        <div class="crowd-emoji" style="background:rgba(255,255,255,.12);">👰</div>
+        <div class="crowd-meta">
+          <div class="crowd-title">备婚人群</div>
+          <div class="crowd-desc">决心强、预算充足、时间节点明确、多品项组合购买</div>
+          <div class="crowd-tags">
+            <span class="crowd-tag">全年高热</span>
+            <span class="crowd-tag">高客单</span>
+            <span class="crowd-tag">强决策</span>
+          </div>
+        </div>
+      </div>
+      <div class="crowd-body">
+        <div class="insight-box">
+          <div class="insight-label">用户心理洞察</div>
+          <div class="insight-text">婚礼是"一生一次"的高光时刻，照片永久留存。既然要花那么多钱在婚纱婚宴上，做医美是理所应当的"投资"。核心焦虑：怕效果不自然、怕没时间恢复、怕跟婚纱照档期冲突。</div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">高频搜索关键词方向</div>
+          <div class="kw-list">
+            <span class="kw hot">婚前医美计划</span><span class="kw hot">备婚皮肤管理</span><span class="kw hot">婚纱照皮肤准备</span>
+            <span class="kw">结婚前激光</span><span class="kw">婚前水光针</span><span class="kw">蜜月前做什么项目</span>
+            <span class="kw">婚前3个月医美</span><span class="kw">婚礼前祛斑</span><span class="kw">备婚多久做医美</span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="insight-box">
+          <div class="insight-label">内容角度</div>
+          <div class="content-angles">
+            <div class="angle"><div class="angle-icon">📅</div><div class="angle-title">时间线规划</div><div class="angle-desc">婚前X个月做什么项目，给出具体时间线，降低决策焦虑</div></div>
+            <div class="angle"><div class="angle-icon">📸</div><div class="angle-title">照片场景</div><span class="angle-desc">婚纱照/婚礼现场才是终极考场，强调上镜效果</div></div>
+            <div class="angle"><div class="angle-icon">🎁</div><div class="angle-title">投资合理化</div><div class="angle-desc">相比婚庆花费，医美成本只是一小部分，却能改变最终效果</div></div>
+            <div class="angle"><div class="angle-icon">👫</div><div class="angle-title">伴侣认可</div><div class="angle-desc">老公/伴侣支持的备婚变美计划，降低心理阻力</div></div>
+          </div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">标题公式</div>
+          <div class="title-formulas">
+            <div class="formula"><div class="formula-type">时间线规划型</div>婚前<em>6个月</em>医美时间线｜照着做就能在婚礼上美哭所有人</div>
+            <div class="formula"><div class="formula-type">结果呈现型</div>婚纱照拍完摄影师说"你皮肤是我拍过最好的新娘之一"</div>
+            <div class="formula"><div class="formula-type">场景对比型</div>同款婚纱，有没有做<em>婚前皮肤管理</em>，差距大到哭</div>
+            <div class="formula"><div class="formula-type">决策辅助型</div>婚前做医美，老公是什么反应？真实备婚医美记录</div>
+          </div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">首图视觉建议</div>
+          <div class="visual-list">
+            <div class="visual-item">婚纱/捧花道具 + 高光透亮皮肤特写，突出上镜质感</div>
+            <div class="visual-item">时间线日历图：婚前6/3/1个月分别标注项目节点</div>
+            <div class="visual-item">婚纱照现场图，搭配"皮肤好是最好的婚纱"文字贴纸</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 学生党 -->
+    <div class="crowd-card" id="student">
+      <div class="crowd-header" style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8);">
+        <div class="crowd-emoji" style="background:rgba(255,255,255,.12);">📚</div>
+        <div class="crowd-meta">
+          <div class="crowd-title">大学生 / Z世代</div>
+          <div class="crowd-desc">暑假时间充裕、处于尝新探索期、对医美的主动搜索意愿强</div>
+          <div class="crowd-tags">
+            <span class="crowd-tag">7-8月爆发</span>
+            <span class="crowd-tag">18-24岁</span>
+            <span class="crowd-tag">主动决策</span>
+          </div>
+        </div>
+      </div>
+      <div class="crowd-body">
+        <div class="insight-box">
+          <div class="insight-label">用户心理洞察</div>
+          <div class="insight-text">暑假是大学生做医美的"黄金窗口"——时间够长、不用担心被同学发现、开学前能完全恢复。大学生处于自我探索和尝新阶段，对医美的接受度高、决策更独立，愿意主动搜索和了解。</div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">高频搜索关键词方向</div>
+          <div class="kw-list">
+            <span class="kw hot">暑假整形恢复期</span><span class="kw hot">大学生做双眼皮</span><span class="kw hot">暑假可以做什么医美</span>
+            <span class="kw">开学前能恢复吗</span><span class="kw">暑假祛痘推荐</span><span class="kw">大学生隆鼻多少钱</span>
+            <span class="kw">轻医美第一次</span><span class="kw">大学生做医美安全吗</span><span class="kw">暑假变美计划</span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="insight-box">
+          <div class="insight-label">内容角度</div>
+          <div class="content-angles">
+            <div class="angle"><div class="angle-icon">⏰</div><div class="angle-title">时间充足感</div><div class="angle-desc">暑假=天然恢复期，"X天完全恢复"消除最大顾虑</div></div>
+            <div class="angle"><div class="angle-icon">🔒</div><div class="angle-title">隐私安全感</div><div class="angle-desc">同学不知道、开学没人发现，还原真实感受</div></div>
+            <div class="angle"><div class="angle-icon">🌟</div><div class="angle-title">尝新探索</div><div class="angle-desc">大学生对医美接受度高，用"第一次体验"视角，降低决策门槛</div></div>
+            <div class="angle"><div class="angle-icon">🎯</div><div class="angle-title">效果预期管理</div><div class="angle-desc">真实的恢复过程记录，降低"怕后悔"的心理成本</div></div>
+          </div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">标题公式</div>
+          <div class="title-formulas">
+            <div class="formula"><div class="formula-type">时间窗口型</div>暑假<em>60天</em>，<em>双眼皮</em>开学前能完全恢复吗？亲身经历</div>
+            <div class="formula"><div class="formula-type">同学不知道型</div>开学第一天，同学以为我开窍了——其实我暑假偷偷做了一件事</div>
+            <div class="formula"><div class="formula-type">尝新记录型</div>大学生第一次做<em>双眼皮</em>，花了多少钱？全程真实记录</div>
+            <div class="formula"><div class="formula-type">恢复记录型</div>暑假做<em>隆鼻</em>第1/7/14/30天真实恢复记录｜开学前完全看不出来</div>
+          </div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">首图视觉建议</div>
+          <div class="visual-list">
+            <div class="visual-item">日历倒计时：暑假第X天 vs 开学第一天，对比真实恢复效果</div>
+            <div class="visual-item">素颜真实感出镜，强调自然不做作，降低"怕被发现"焦虑</div>
+            <div class="visual-item">校园场景回归，用"开学了"作为视觉钩子</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. 职场白领 -->
+    <div class="crowd-card" id="office">
+      <div class="crowd-header" style="background:linear-gradient(135deg,#3b0764,#6d28d9);">
+        <div class="crowd-emoji" style="background:rgba(255,255,255,.12);">💼</div>
+        <div class="crowd-meta">
+          <div class="crowd-title">有调休 / 年假人群</div>
+          <div class="crowd-desc">消费力强、决策理性、调休或年假是做医美的难得窗口、不影响工作是核心诉求</div>
+          <div class="crowd-tags">
+            <span class="crowd-tag">年假/调休期</span>
+            <span class="crowd-tag">25-40岁</span>
+            <span class="crowd-tag">高消费力</span>
+          </div>
+        </div>
+      </div>
+      <div class="crowd-body">
+        <div class="insight-box">
+          <div class="insight-label">用户心理洞察</div>
+          <div class="insight-text">平时工作节奏快，调休攒假或年假集中使用才是难得的"窗口期"。想法往往已经有了很久，只是一直没找到合适时机。最大顾虑：恢复期影响工作、做完上班被同事发现、请假麻烦。效率优先，希望一次解决多个问题。</div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">高频搜索关键词方向</div>
+          <div class="kw-list">
+            <span class="kw hot">年假做医美</span><span class="kw hot">不影响上班的医美</span><span class="kw hot">调休做什么项目</span>
+            <span class="kw">上班族祛眼袋</span><span class="kw">请几天假能恢复</span><span class="kw">法令纹填充恢复多久</span>
+            <span class="kw">假期轻医美推荐</span><span class="kw">班味去掉</span><span class="kw">假期变美计划</span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="insight-box">
+          <div class="insight-label">内容角度</div>
+          <div class="content-angles">
+            <div class="angle"><div class="angle-icon">⚡</div><div class="angle-title">高效恢复</div><div class="angle-desc">"请X天假+周末=完全恢复"，给出精准的时间成本</div></div>
+            <div class="angle"><div class="angle-icon">🎯</div><div class="angle-title">精准需求</div><div class="angle-desc">上班族专属痛点：眼袋、法令纹、疲惫感——对症下药</div></div>
+            <div class="angle"><div class="angle-icon">📊</div><div class="angle-title">ROI思维</div><div class="angle-desc">职场形象提升带来的收益 > 医美成本，理性投资视角</div></div>
+            <div class="angle"><div class="angle-icon">🔕</div><div class="angle-title">低调不被发现</div><div class="angle-desc">同事不知道你做了什么，只会问你"最近状态好好"</div></div>
+          </div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">标题公式</div>
+          <div class="title-formulas">
+            <div class="formula"><div class="formula-type">效率型</div>请<em>3天假</em>+周末，祛眼袋完全恢复｜上班族最值的假期安排</div>
+            <div class="formula"><div class="formula-type">职场形象型</div>做完<em>法令纹填充</em>，老板说我"看起来精神多了"——没人知道我做了什么</div>
+            <div class="formula"><div class="formula-type">痛点对照型</div>熬夜加班熬出来的<em>眼袋</em>，终于在暑假趁机解决了</div>
+            <div class="formula"><div class="formula-type">决策辅助型</div>年假7天能做什么医美项目？附完整恢复时间表</div>
+          </div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">首图视觉建议</div>
+          <div class="visual-list">
+            <div class="visual-item">职场场景（笔记本/咖啡/会议室）+ 状态好的面部特写，传递"精英感"</div>
+            <div class="visual-item">请假条/日历道具，具体化"假期窗口"的稀缺感</div>
+            <div class="visual-item">Before/After用光线变化体现，不用夸张对比，追求"自然好看"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. 宝妈 -->
+    <div class="crowd-card" id="mom">
+      <div class="crowd-header" style="background:linear-gradient(135deg,#713f12,#92400e);">
+        <div class="crowd-emoji" style="background:rgba(255,255,255,.12);">🏠</div>
+        <div class="crowd-meta">
+          <div class="crowd-title">孩子上暑期班的妈妈</div>
+          <div class="crowd-desc">孩子6-12岁、自己30-40岁，抗衰需求开始浮现，孩子的固定课程创造了难得的空档期</div>
+          <div class="crowd-tags">
+            <span class="crowd-tag">7-8月空档期</span>
+            <span class="crowd-tag">30-40岁</span>
+            <span class="crowd-tag">抗衰需求</span>
+          </div>
+        </div>
+      </div>
+      <div class="crowd-body">
+        <div class="insight-box">
+          <div class="insight-label">用户心理洞察</div>
+          <div class="insight-text">孩子上了暑期班或夏令营，每天送完孩子有2-3小时的固定空档。这个年龄段的妈妈（30-40岁）正好到了开始感知衰老的节点——眼袋、法令纹、皮肤松弛——但长期把时间精力放在孩子身上，自己的需求一直被压着。空档期成了一个"终于有理由照顾自己"的触发点。</div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">高频搜索关键词方向</div>
+          <div class="kw-list">
+            <span class="kw hot">眼袋重显老怎么办</span><span class="kw hot">法令纹加深</span><span class="kw hot">30岁以后皮肤变差</span>
+            <span class="kw">送孩子上课后做医美</span><span class="kw">眼袋手术恢复期</span><span class="kw">法令纹填充多久见效</span>
+            <span class="kw">抗衰项目推荐</span><span class="kw">妈妈也要变美</span><span class="kw">皮肤暗沉改善</span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="insight-box">
+          <div class="insight-label">内容角度</div>
+          <div class="content-angles">
+            <div class="angle"><div class="angle-icon">🕐</div><div class="angle-title">空档触发</div><div class="angle-desc">送孩子上课后的2-3小时空档，终于有了"顺路去做"的理由</div></div>
+            <div class="angle"><div class="angle-icon">⏰</div><div class="angle-title">年龄节点感知</div><div class="angle-desc">30岁+是抗衰的关键窗口期，不做只会越来越难，制造紧迫感</div></div>
+            <div class="angle"><div class="angle-icon">👁️</div><div class="angle-title">显老痛点精准打</div><div class="angle-desc">眼袋/法令纹是最直接的"显老信号"，对症呈现改善效果</div></div>
+            <div class="angle"><div class="angle-icon">❤️</div><div class="angle-title">自我价值感</div><div class="angle-desc">"照顾好家人，也要照顾好自己"，给出做这件事的情感合理性</div></div>
+          </div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">标题公式</div>
+          <div class="title-formulas">
+            <div class="formula"><div class="formula-type">空档触发型</div>送完孩子去夏令营，我顺路去做了<em>眼袋</em>——等孩子放学前就处理好了</div>
+            <div class="formula"><div class="formula-type">年龄节点型</div>35岁突然发现眼袋法令纹都来了｜做了<em>填充</em>后同龄人说我看起来年轻了5岁</div>
+            <div class="formula"><div class="formula-type">痛点精准型</div>总被说"看起来好累"？其实是<em>眼袋</em>在拖累你的气色（附改善方案）</div>
+            <div class="formula"><div class="formula-type">情感共鸣型</div>把时间都给了孩子和家庭，今年暑假我终于留了两小时给自己</div>
+          </div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">首图视觉建议</div>
+          <div class="visual-list">
+            <div class="visual-item">咖啡馆/等候区场景，传递"送完孩子的空档时间"生活感</div>
+            <div class="visual-item">眼袋/法令纹局部前后对比，强调"自然提升气色"而非夸张变化</div>
+            <div class="visual-item">30+真实女性出镜，气质感 > 精英感，让目标人群有代入感</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. 晒后修复 -->
+    <div class="crowd-card" id="suncare">
+      <div class="crowd-header" style="background:linear-gradient(135deg,#7c2d12,#c2410c);">
+        <div class="crowd-emoji" style="background:rgba(255,255,255,.12);">🌞</div>
+        <div class="crowd-meta">
+          <div class="crowd-title">晒后修复人群</div>
+          <div class="crowd-desc">需求被动触发、紧迫感强、决策窗口短，需快速承接</div>
+          <div class="crowd-tags">
+            <span class="crowd-tag">7-9月爆发</span>
+            <span class="crowd-tag">旅游/户外后</span>
+            <span class="crowd-tag">需求即时性</span>
+          </div>
+        </div>
+      </div>
+      <div class="crowd-body">
+        <div class="insight-box">
+          <div class="insight-label">用户心理洞察</div>
+          <div class="insight-text">暑期旅游/海边/户外运动后发现"晒黑了""多了好多斑"——这是被动触发的需求，紧迫感强、决策快。核心焦虑：防晒没用、晒后怎么快速白回来、斑会不会留下来。</div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">高频搜索关键词方向</div>
+          <div class="kw-list">
+            <span class="kw hot">晒黑修复</span><span class="kw hot">晒后祛斑</span><span class="kw hot">旅游晒黑怎么变白</span>
+            <span class="kw">光子嫩肤晒斑</span><span class="kw">晒出来的斑能去掉吗</span><span class="kw">暑假晒黑了</span>
+            <span class="kw">海边晒后修复</span><span class="kw">激光祛晒斑</span><span class="kw">晒后多久可以做激光</span>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="insight-box">
+          <div class="insight-label">内容角度</div>
+          <div class="content-angles">
+            <div class="angle"><div class="angle-icon">🆘</div><div class="angle-title">急救科普</div><div class="angle-desc">"晒黑vs晒伤vs晒出斑"区分，对症推荐，建立专业信任感</div></div>
+            <div class="angle"><div class="angle-icon">🔬</div><div class="angle-title">原理解释</div><div class="angle-desc">为什么护肤品白不回来？激光是怎么作用于晒斑的？</div></div>
+            <div class="angle"><div class="angle-icon">⏳</div><div class="angle-title">紧迫感承接</div><div class="angle-desc">"晒后尽早干预效果更好"，把紧迫感变成行动动力</div></div>
+            <div class="angle"><div class="angle-icon">🗓️</div><div class="angle-title">疗程规划</div><div class="angle-desc">一次能解决多少？需要几次？给出清晰预期</div></div>
+          </div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">标题公式</div>
+          <div class="title-formulas">
+            <div class="formula"><div class="formula-type">急救承接型</div>三亚回来晒黑了一个色号｜医生说<em>晒后两周内</em>是干预黄金期</div>
+            <div class="formula"><div class="formula-type">科普对比型</div>晒黑 vs 晒出斑，处理方式完全不同｜别用错方法耽误修复</div>
+            <div class="formula"><div class="formula-type">效果承诺型</div>海南旅行晒出来的<em>雀斑</em>，做了<em>2次光子</em>后真实变化记录</div>
+            <div class="formula"><div class="formula-type">反常识型</div>防晒霜涂了还是晒黑？因为你忽略了这一步（附晒后修复攻略）</div>
+          </div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-label">首图视觉建议</div>
+          <div class="visual-list">
+            <div class="visual-item">旅游/海边场景代入，搭配"晒后皮肤"真实状态，引发共鸣</div>
+            <div class="visual-item">高对比度色卡色号变化图，视觉化呈现"白回来了"的效果</div>
+            <div class="visual-item">日历道具标注"旅行回来第X天"，强化时间节点感</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- .crowds-grid -->
+
+  <!-- 通用建议 -->
+  <div style="margin-bottom:48px;">
+    <h2 class="section-title"><span class="icon">💡</span>暑期内容投放通用建议</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;">
+      <div class="insight-box" style="margin:0;">
+        <div class="insight-label">🔑 高频触发词</div>
+        <div class="insight-text">在标题/首图中嵌入暑期时间节点词，显著提升点击率：<br>
+        <strong>「暑假」「开学前」「毕业前」「婚前X个月」「恢复期」「趁假期」「孩子放假」「旅游回来」</strong></div>
+      </div>
+      <div class="insight-box" style="margin:0;">
+        <div class="insight-label">📱 内容形式建议</div>
+        <div class="insight-text">
+          • <strong>恢复期日记</strong>：时间线打卡，降低"怕不能恢复"焦虑<br>
+          • <strong>决策辅助帖</strong>：FAQ形式，覆盖最多疑虑<br>
+          • <strong>时间规划表</strong>：可视化恢复期，提升信任感<br>
+          • <strong>真实素人视角</strong>：降低"精英感"，增加代入感
+        </div>
+      </div>
+      <div class="insight-box" style="margin:0;">
+        <div class="insight-label">⚠️ 规避雷区</div>
+        <div class="insight-text">
+          • 不用"整容"等敏感词，改用"微调""优化""修复"<br>
+          • 避免夸张Before/After，监管趋严，写实更安全<br>
+          • 不承诺绝对效果，用"真实记录"视角代替广告语<br>
+          • 暑假内容不要过早上线，6月底-7月初投放最佳
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>暑期节点医美搜索广告内容制作建议 · 2026-06-07 · Powered by category-material-advisor</p>
+</footer>
+
+</body>
+</html>
